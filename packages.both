@@ -1,3 +1,10 @@
+# GUI
+gnome-shell
+gnome-disk-utility
+xorg
+virtualbox-guest-utils
+
+# Base
 arch-install-scripts
 b43-fwcutter
 btrfs-progs
