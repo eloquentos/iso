@@ -75,6 +75,12 @@ make_setup_mkinitcpio() {
         cp /usr/lib/initcpio/hooks/${_hook} ${work_dir}/${arch}/airootfs/etc/initcpio/hooks
         cp /usr/lib/initcpio/install/${_hook} ${work_dir}/${arch}/airootfs/etc/initcpio/install
     done
+    
+    cp ${script_path}/airootfs/etc/os-release ${work_dir}/${arch}/airootfs/etc
+
+    cp ${script_path}/initcpio/hooks/* ${work_dir}/${arch}/airootfs/etc/initcpio/hooks
+    cp ${script_path}/initcpio/install/* ${work_dir}/${arch}/airootfs/etc/initcpio/install
+
     sed -i "s|/usr/lib/initcpio/|/etc/initcpio/|g" ${work_dir}/${arch}/airootfs/etc/initcpio/install/archiso_shutdown
     cp /usr/lib/initcpio/install/archiso_kms ${work_dir}/${arch}/airootfs/etc/initcpio/install
     cp /usr/lib/initcpio/archiso_shutdown ${work_dir}/${arch}/airootfs/etc/initcpio
@@ -160,7 +166,7 @@ make_efi() {
 # Prepare efiboot.img::/EFI for "El Torito" EFI boot mode
 make_efiboot() {
     mkdir -p ${work_dir}/iso/EFI/archiso
-    truncate -s 31M ${work_dir}/iso/EFI/archiso/efiboot.img
+    truncate -s 50M ${work_dir}/iso/EFI/archiso/efiboot.img
     mkfs.vfat -n ARCHISO_EFI ${work_dir}/iso/EFI/archiso/efiboot.img
 
     mkdir -p ${work_dir}/efiboot
@@ -236,17 +242,26 @@ done
 
 mkdir -p ${work_dir}
 
+cp -v ${script_path}/pacmanx86_64.conf ${work_dir}/pacman.conf
 run_once make_pacman_conf
 
 # Do all stuff for each airootfs
-for arch in i686 x86_64; do
+for arch in x86_64; do
     run_once make_basefs
     run_once make_packages
+    run_once make_packages_efi
+    run_once make_setup_mkinitcpio
+    run_once make_customize_airootfs
 done
 
-run_once make_packages_efi
+echo make_pacman_conf i686
+cp -v ${script_path}/pacmani686.conf ${work_dir}/pacman.conf
 
-for arch in i686 x86_64; do
+
+for arch in i686; do
+    run_once make_basefs
+    run_once make_packages
+    run_once make_packages_efi
     run_once make_setup_mkinitcpio
     run_once make_customize_airootfs
 done
