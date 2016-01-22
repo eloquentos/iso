@@ -6,6 +6,8 @@ xorg
 virtualbox-guest-utils
 
 # Base
+plymouth
+gdm-plymouth
 arch-install-scripts
 b43-fwcutter
 btrfs-progs
