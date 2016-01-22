@@ -4,6 +4,7 @@ gnome-shell
 gnome-disk-utility
 xorg
 virtualbox-guest-utils
+eloquent-installer
 
 # Base
 plymouth
