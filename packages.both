@@ -1,5 +1,6 @@
 # GUI
 gnome-shell
+gnome-terminal
 gnome-disk-utility
 xorg
 virtualbox-guest-utils
