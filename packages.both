@@ -5,8 +5,10 @@ gnome-disk-utility
 xorg
 virtualbox-guest-utils
 eloquent-installer
+eloquent-ui
 
 # Base
+gnome-shell-extensions
 plymouth
 gdm-plymouth
 arch-install-scripts
