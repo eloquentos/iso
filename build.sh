@@ -242,7 +242,6 @@ done
 
 mkdir -p ${work_dir}
 
-cp -v ${script_path}/pacmanx86_64.conf ${work_dir}/pacman.conf
 run_once make_pacman_conf
 
 # Do all stuff for each airootfs
