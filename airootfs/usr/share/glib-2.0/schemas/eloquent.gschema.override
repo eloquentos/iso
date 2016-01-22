@@ -1,0 +1,8 @@
+[org.gnome.desktop.interface]
+gtk-theme="Eloquent"
+
+[org.gnome.shell.extensions.user-theme]
+name="Eloquent"
+
+[org.gnome.shell]
+enabled-extensions=['user-theme@gnome-shell-extensions.gcampax.github.com']
