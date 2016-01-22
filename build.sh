@@ -245,7 +245,7 @@ mkdir -p ${work_dir}
 run_once make_pacman_conf
 
 # Do all stuff for each airootfs
--for arch in i686 x86_64; do
+for arch in i686 x86_64; do
     run_once make_basefs
     run_once make_packages
 done
