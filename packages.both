@@ -8,6 +8,8 @@ eloquent-installer
 eloquent-ui
 
 # Base
+broadcom-wl
+b43-firmware
 gnome-shell-extensions
 plymouth
 gdm-plymouth
