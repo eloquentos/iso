@@ -7,6 +7,9 @@ virtualbox-guest-utils
 eloquent-installer
 eloquent-ui
 
+# Included apps
+orca
+
 # Base
 broadcom-wl
 b43-firmware
