@@ -1,5 +1,7 @@
 # Eloquent OS Installer ISO
 
+[![Build Status](https://travis-ci.org/eloquentos/iso.svg)](https://travis-ci.org/eloquentos/iso)
+
 Copyright (c) 2016 Nimbusoft Ltd
 
 Eloquent OS installer ISO. Used to boot into the Eloquent OS installer.
