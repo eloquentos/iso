@@ -1,6 +1,6 @@
 # Eloquent OS Installer ISO
 
-[![Build Status](https://travis-ci.org/eloquentos/iso.svg)](https://travis-ci.org/eloquentos/iso)
+[![Build Status](https://travis-ci.org/eloquentos/iso.svg)](https://travis-ci.org/eloquentos/iso) [![SourceForge](https://img.shields.io/sourceforge/dm/eloquentos.svg?maxAge=2592000)](https://sourceforge.net/projects/eloquentos/files/iso/releases/)
 
 Copyright (c) 2016 Nimbusoft Ltd
 
