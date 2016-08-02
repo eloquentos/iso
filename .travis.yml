@@ -1,5 +1,8 @@
 sudo: required
 
+env:
+    - secure: "XtPUM/XHMxOOlhODr7yVHRZzoHSu2nGByNZYIzB4i0BByKBnF7/bCrxIuh4RTK6Xa64SCnS0+9bnrgLBQO5pqyDGnCGHqNFxskBT0xTXbD6jML0hiwMKJ1EN+ozsQqqI3d21SPtE2WI3a4SPUf6BUEc+nF/RHognsxwJlUxCpmX13OyLu5MN3J5RDz9BCz5YePcySHOdI7E5yoih988jHX3oAj+TKgiOCwaVOSXUSi/X8EYKTB2rNH5aFs97wkY4/UUQl8UIIrbkCGT+4wbCBbW/AyrOL/JAlDKXh/76gzqUG/9qOpnSXsqSFcLai78vBNhfuapaCiysvOm+KjJBRhxZhziJ6idUDTGTo+mvOzeHjkcbkHlXJCR+tvVHAoIkH78SMTaq9jo3uMW+H5aLc622XhcIkvChW4Tx+EEHlSPlTXBtzDXtLuUVI6EpYNDBcXVLTWKBsdPnH0OnsGtTJ18L7ERpww1pOfX4rCz0Pty7LQDYXlsnlrBnd2ASP3P/z02OrBtOAzsggzVQNWqQ7wdschUfHmqZKA2MXhxaAcIJyvuNUDUqZLGbXQjsXWSeJjPNDVP/IpG1/UxrCLL6Caggb7yhpUNBmJur6rnAxd22V0pjpSy0z9UEJE+d+ujuteELyWJ/+z1PE+Xe4KmWBvWK3Uag3+RyfivIeNap6dw="
+
 services:
   - docker
 
@@ -7,6 +10,12 @@ before_install:
     - docker pull pritunl/archlinux
     - docker run --name eloquentos -itd --privileged -v ${PWD}:/mnt pritunl/archlinux /bin/bash
     - docker exec eloquentos pacman -S archiso --noconfirm
+    - docker exec eloquentos pacman-key --add /mnt/sign-key
+    - docker exec eloquentos pacman-key --lsign-key eloquentos@nimbusoft.co.uk
     - docker exec eloquentos mkdir /run/shm
 
 script: docker exec eloquentos /bin/sh -c "cd /mnt && ./build.sh -v"
+
+after_success:
+    - sudo apt-get install -y sshpass
+    - ./deploy.sh
