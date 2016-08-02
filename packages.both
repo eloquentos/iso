@@ -3,16 +3,17 @@ gnome-shell
 gnome-terminal
 gnome-disk-utility
 xorg
-virtualbox-guest-utils
-eloquent-installer
-eloquent-ui
+#eloquent-installer
+flatplat-theme
+paper-icon-theme-git
 
 # Included apps
 orca
 
+# System
+virtualbox-guest-utils
+
 # Base
-broadcom-wl
-b43-firmware
 gnome-shell-extensions
 plymouth
 gdm-plymouth
