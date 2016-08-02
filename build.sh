@@ -78,8 +78,8 @@ make_setup_mkinitcpio() {
 
     cp ${script_path}/airootfs/etc/os-release ${work_dir}/${arch}/airootfs/etc
 
-    cp ${script_path}/initcpio/hooks/* ${work_dir}/${arch}/airootfs/etc/initcpio/hooks
-    cp ${script_path}/initcpio/install/* ${work_dir}/${arch}/airootfs/etc/initcpio/install
+    #cp ${script_path}/initcpio/hooks/* ${work_dir}/${arch}/airootfs/etc/initcpio/hooks
+    #cp ${script_path}/initcpio/install/* ${work_dir}/${arch}/airootfs/etc/initcpio/install
 
     sed -i "s|/usr/lib/initcpio/|/etc/initcpio/|g" ${work_dir}/${arch}/airootfs/etc/initcpio/install/archiso_shutdown
     cp /usr/lib/initcpio/install/archiso_kms ${work_dir}/${arch}/airootfs/etc/initcpio/install
