@@ -7,6 +7,7 @@ locale-gen
 
 ln -sf /usr/share/zoneinfo/UTC /etc/localtime
 
+usermod -s /usr/bin/zsh root
 cp -aT /etc/skel/ /root/
 chmod 700 /root
 
@@ -18,31 +19,5 @@ sed -i 's/#\(HandleSuspendKey=\)suspend/\1ignore/' /etc/systemd/logind.conf
 sed -i 's/#\(HandleHibernateKey=\)hibernate/\1ignore/' /etc/systemd/logind.conf
 sed -i 's/#\(HandleLidSwitch=\)suspend/\1ignore/' /etc/systemd/logind.conf
 
-rm -f /usr/share/applications/avahi-discover.desktop
-rm -f /usr/share/applications/assistant.desktop
-rm -f /usr/share/applications/assistant-qt4.desktop
-rm -f /usr/share/applications/bssh.desktop
-rm -f /usr/share/applications/bvnc.desktop
-rm -f /usr/share/applications/cups.desktop
-rm -f /usr/share/applications/designer.desktop
-rm -f /usr/share/applications/designer-qt4.desktop
-rm -f /usr/share/applications/elinks.desktop
-rm -f /usr/share/applications/linguist.desktop
-rm -f /usr/share/applications/linguist-qt4.desktop
-rm -f /usr/share/applications/qdbusviewer.desktop
-rm -f /usr/share/applications/qdbusviewer-qt4.desktop
-rm -f /usr/share/applications/qtconfig-qt4.desktop
-rm -f /usr/share/applications/qv4l2.desktop
-rm -f /usr/share/applications/tracker-needle.desktop
-rm -f /usr/share/applications/tracker-preferences.desktop
-rm -f /usr/share/applications/zenmap.desktop
-rm -f /usr/share/applications/zenmap-root.desktop
-
-glib-compile-schemas /usr/share/glib-2.0/schemas/
-
-mv /usr/share/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell/gnome-shell-theme.gresource~
-cp /usr/share/themes/Flat-Plat/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell/gnome-shell-theme.gresource
-
 systemctl enable pacman-init.service choose-mirror.service
-systemctl enable gdm-plymouth.service
-systemctl enable NetworkManager.service
+systemctl set-default multi-user.target
